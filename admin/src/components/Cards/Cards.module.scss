@@ -1,0 +1,43 @@
+.wrapper {
+    display: flex;
+    gap: 10px;
+}
+.parent {
+    width: 100%;
+    min-height: 100px;
+}
+.card-item {
+    border-radius: 7px;
+    height: 13rem;
+    display: flex;
+    align-items: center;
+}
+.radialBar {
+    padding: 10px;
+    text-align: center;
+}
+.radialBar p {
+    color: #fff !important;
+    font-weight: bold;
+    margin-top: 7px;
+}
+.detail {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-right: 13px;
+    color: #fff;
+}
+.icon {
+    font-size: 2.3rem;
+}
+.detail > span:nth-child(2) {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.detail > span:nth-child(3) {
+    font-size: 1.4rem;
+}

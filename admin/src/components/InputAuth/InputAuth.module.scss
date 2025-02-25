@@ -1,0 +1,39 @@
+.wrapper {
+    border: 2px solid #ccc;
+    width: 100%;
+    max-width: 444px;
+    border-radius: 7px;
+    margin: 20px 0px;
+    position: relative;
+
+    &:focus-within {
+        border: 2px solid #c4d7ff;
+        box-shadow: 0 0 3px #0051ff;
+    }
+}
+.label {
+    position: absolute;
+    top: calc(-50% + 10px);
+    left: 7px;
+    padding: 0 10px;
+    font-size: 1.8rem;
+    background-color: #fff;
+    color: #407dff;
+    border-radius: 1000000000000px;
+}
+.wrapper input {
+    background-color: transparent;
+    height: 50px;
+    width: 100%;
+    font-size: 2rem;
+    caret-color: red;
+    padding: 0 10px;
+}
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #407dff;
+    cursor: pointer;
+}

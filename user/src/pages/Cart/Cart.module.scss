@@ -1,0 +1,185 @@
+.wrapper {
+    margin-top: 13px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 13px;
+    color: #131313;
+}
+.sidebar-cart,
+.pd-list,
+.billing-info {
+    min-height: 100px;
+    background-color: #fff;
+    border-radius: 13px;
+    box-shadow: 0 0 5px rgb(24, 15, 15, 0.06);
+    margin-bottom: 13px;
+}
+
+.pd-list table {
+    width: 100%;
+    padding: 13px;
+}
+
+.pd-list table input {
+    background-color: rgb(236, 231, 231, 0.6);
+    border-radius: 13px;
+    font-size: 1.7rem;
+    padding: 0 0px;
+    width: 70px;
+    height: 40px;
+}
+
+.pd-list table th,
+.pd-list table td {
+    padding: 2px 2px;
+    text-align: left;
+}
+.pd-list table td {
+    border-top: 1px solid #eee;
+}
+
+.pd-list table th:nth-last-child(1),
+.pd-list table td:nth-last-child(1) {
+    padding: 0 6px;
+    text-align: center;
+}
+
+.pd-list table th:nth-last-child(2),
+.pd-list table td:nth-last-child(2) {
+    width: 100px;
+}
+
+.pd-list table th:nth-child(2),
+.pd-list table td:nth-child(2) {
+    width: 120px;
+}
+
+.pd-list table td:nth-child(2) img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.other-handel {
+    display: flex;
+    padding: 40px 20px;
+    justify-content: flex-end;
+}
+.other-handel button,
+.other-handel a {
+    padding: 10px 20px;
+}
+
+.sidebar-cart {
+    padding: 13px 20px;
+}
+
+.sum {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-submit {
+    width: 100%;
+    margin: 13px 0;
+}
+.billing-info {
+    padding: 40px;
+}
+.contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+.note {
+    width: 100%;
+    min-height: 137px;
+    font-size: 1.7rem;
+}
+.pd-list img {
+    max-height: 100px;
+}
+
+.delete-icon {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+    .wrapper {
+        display: block;
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* desktop */
+@media only screen and (min-width: 1025px) {
+}
+
+.empty-cart {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    opacity: 0.6;
+}
+
+.checked {
+    width: 20px;
+}
+
+.checked input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 15px;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    width: 18px !important;
+    height: 18px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.checked input[type='checkbox']:checked {
+    background-color: #fceded; /* Hiệu ứng màu nền khi check */
+    border-color: rgb(252, 105, 105);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checked input[type='checkbox']:checked::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border: solid rgb(252, 105, 105);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0); /* Bắt đầu với kích thước nhỏ */
+    top: 0px;
+    left: 5px;
+    opacity: 0; /* Ẩn ban đầu */
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Hiệu ứng checkmark */
+}
+
+.checked input[type='checkbox']:checked::after {
+    transform: rotate(45deg) scale(1); /* Hiện đầy đủ khi check */
+    opacity: 1; /* Hiển thị */
+}

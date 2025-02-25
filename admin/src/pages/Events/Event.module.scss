@@ -1,0 +1,11 @@
+.wrapper {
+    padding: 0 10px;
+}
+.list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+.filter {
+    margin-bottom: 20px;
+}

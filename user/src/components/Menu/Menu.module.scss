@@ -1,0 +1,22 @@
+.box {
+    background-color: #fff;
+    color: #131313;
+    padding: 10px 0px;
+    border-radius: 13px;
+    box-shadow: 0 0 4px #a7a6a6;
+}
+
+.item a {
+    color: #131313;
+}
+
+.item {
+    font-size: 1.7rem;
+    padding: 7px 13px;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: #dad9d9;
+    }
+}

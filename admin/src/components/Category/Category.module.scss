@@ -1,0 +1,34 @@
+.wrapper {
+    box-shadow: 0px 0px 2px rgba(23, 24, 23, 0.5);
+    border-radius: 5px;
+    padding: 7px;
+    padding-top: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+}
+
+.img {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+}
+.img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 13px;
+}
+.info p {
+    color: #000;
+
+    &:nth-child(1) {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}

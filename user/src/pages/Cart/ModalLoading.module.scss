@@ -1,0 +1,44 @@
+/* Lớp overlay - tạo lớp phủ mờ ở phía sau modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Lớp phủ màu đen mờ */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    z-index: 9999; /* Đảm bảo modal hiển thị trên các phần tử khác */
+}
+
+/* Lớp modal - chứa nội dung của modal */
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ cho modal */
+}
+
+/* Phần loading text */
+.loading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    animation: pulse 1.5s infinite; /* Thêm hiệu ứng nhấp nháy */
+}
+
+/* Animation để tạo hiệu ứng nhấp nháy cho chữ "Đang xử lý..." */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,117 @@
+.wrapper {
+    margin-top: 13px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 13px;
+    color: #131313;
+}
+.sidebar-cart,
+.pd-list,
+.billing-info {
+    min-height: 100px;
+    background-color: #fff;
+    border-radius: 13px;
+    box-shadow: 0 0 5px rgb(24, 15, 15, 0.06);
+    margin-bottom: 13px;
+}
+
+.pd-list table {
+    width: 100%;
+    padding: 13px;
+}
+
+.pd-list table input {
+    background-color: rgb(236, 231, 231, 0.6);
+    border-radius: 13px;
+    font-size: 1.7rem;
+    padding: 0 0px;
+    width: 70px;
+    height: 40px;
+}
+
+.pd-list table th,
+.pd-list table td {
+    padding: 7px 2px;
+    text-align: left;
+}
+.pd-list table td {
+    border-top: 1px solid #eee;
+}
+
+.pd-list table th:nth-last-child(1),
+.pd-list table td:nth-last-child(2) {
+    padding: 0 13px;
+}
+
+.other-handel {
+    display: flex;
+    padding: 40px 20px;
+    justify-content: flex-end;
+}
+.other-handel button,
+.other-handel a {
+    padding: 10px 20px;
+}
+
+.sidebar-cart {
+    padding: 13px 20px;
+}
+
+.sum {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-submit {
+    width: 100%;
+    margin: 13px 0;
+}
+.billing-info {
+    padding: 40px;
+}
+.contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+.note {
+    width: 100%;
+    min-height: 137px;
+    font-size: 1.7rem;
+}
+.pd-list img {
+    max-height: 100px;
+}
+
+.delete-icon {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+    .wrapper {
+        display: block;
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* desktop */
+@media only screen and (min-width: 1025px) {
+}
+
+.empty-cart {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    opacity: 0.6;
+}

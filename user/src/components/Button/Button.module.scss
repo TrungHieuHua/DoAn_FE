@@ -1,0 +1,89 @@
+.wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    padding: 13px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    color: #0066cc;
+    background-color: transparent;
+    cursor: pointer;
+
+    border: 1px solid transparent;
+    user-select: none;
+    + .wrapper {
+        margin-left: 7px;
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+}
+
+.title + .icon,
+.icon + .title {
+    margin-left: 8px;
+}
+.icon {
+    display: flex;
+    width: 20px;
+    text-align: left;
+}
+
+// Button types
+.rounded {
+    border-radius: 1307px;
+    box-shadow: 0 2px 8px rgba(0 0 0 / 6%);
+    border-color: rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        box-shadow: 0 2px 8px rgba(0 0 0 / 13%);
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+.primary {
+    color: var(--while);
+    background-color: #0066cc;
+    border-color: #0066cc;
+    cursor: pointer;
+    &:hover {
+        border-color: #0066cc;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06), #0066cc);
+    }
+}
+.outline {
+    color: #0066cc;
+    border-color: currentColor;
+
+    &:hover {
+        border-color: currentColor;
+        color: var(--while);
+        background-color: #0066cc;
+    }
+}
+.text {
+    background-color: transparent;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+//Button size
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+.large {
+    font-size: 1.7rem;
+    padding: 13px 40px;
+    min-width: 137px;
+}
+
+.leftIcon {
+    margin-right: 5px;
+}
+.rightIcon {
+    margin-left: 5px;
+}

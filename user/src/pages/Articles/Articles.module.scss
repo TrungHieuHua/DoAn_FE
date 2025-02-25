@@ -1,0 +1,52 @@
+.wrapper {
+    padding: 0 13px;
+}
+
+.sidebar {
+    color: #1d1d1f;
+    font-size: 1.9rem;
+    font-weight: 600;
+}
+.sidebar div {
+    padding: 13px 0;
+    cursor: pointer;
+}
+
+.list {
+    margin-top: 40px;
+    color: #131313;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 13px;
+}
+
+@media only screen and (max-width: 767px) {
+    .items {
+        display: block;
+    }
+    .list {
+        display: block;
+    }
+    .sidebar {
+        display: flex;
+        font-size: 1.8rem;
+    }
+    .menu {
+        margin: 0 5px;
+    }
+    .menu a {
+        padding: 0 20px;
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* desktop */
+@media only screen and (min-width: 1025px) {
+}
