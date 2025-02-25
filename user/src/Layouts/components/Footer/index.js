@@ -14,13 +14,13 @@ function Footer() {
                         <Logo />
                     </div>
                     <div>
-                        <p>Địa chỉ: Số 88-Cầu Diễn - Bắc Từ Liêm - Hà Nội</p>
+                        <p>Địa chỉ: Số 141 - Chiến Thắng - Văn Quán - Hà Đông - Hà Nội</p>
                     </div>
                 </div>
                 <div className={cx('intro')}>
                     <h3>Liên hệ</h3>
-                    <p>Điện thoại: 0382952063</p>
-                    <p>Email: vhai31102002@gmail.com</p>
+                    <p>Điện thoại: 0392313572</p>
+                    <p>Email: hieuhua7802@gmail.comcom</p>
                 </div>
                 <div className={cx('member')}>
                     <h3>Thông báo</h3>
@@ -28,7 +28,7 @@ function Footer() {
                     <p>Gói bảo hành</p>
                 </div>
             </div>
-            <div className={cx('copyright')}>ShoesShop ©2024 Created by Nguyen Viet Hai</div>
+            <div className={cx('copyright')}>ShoesShop ©2025 Created by Hua Trung Hieu</div>
         </footer>
     );
 }

@@ -37,7 +37,7 @@ export default function Slider() {
                 }}
                 navigation={true}
                 autoplay={{
-                    delay: 3000, // Delay between slides in milliseconds (3000ms = 3 seconds)
+                    delay: 9000, // Delay between slides in milliseconds
                     disableOnInteraction: false, // Autoplay won't stop after user interaction
                 }}
                 modules={[Pagination, Navigation, Autoplay]} // Add Autoplay module
