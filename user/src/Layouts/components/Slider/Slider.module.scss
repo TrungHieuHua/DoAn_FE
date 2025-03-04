@@ -1,0 +1,28 @@
+.wrapper {
+    width: 100%;
+    height: calc(33.3vw);
+    background-color: #eee;
+}
+
+.wrapper img {
+    width: 100%;
+    height: calc(33.3vw);
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 767px) {
+    .wrapper img {
+        height: 100vw;
+    }
+    .wrapper {
+        height: 100vw;
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* desktop */
+@media only screen and (min-width: 1025px) {
+}

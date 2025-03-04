@@ -1,0 +1,29 @@
+.wrapper {
+}
+
+.table {
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.wrapper .table > div:nth-child(2) .order,
+.wrapper .table > div:nth-child(1) div {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    text-align: left;
+    padding: 0px 13px;
+}
+
+.wrapper .table > div:nth-child(1) div {
+    font-weight: bold;
+    padding: 8px 13px;
+}
+
+.wrapper .table > div:nth-child(2) .order {
+    cursor: pointer;
+    &:hover {
+        background-color: #eee;
+    }
+}

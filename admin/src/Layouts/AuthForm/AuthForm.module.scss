@@ -1,0 +1,44 @@
+.wrapper {
+    width: 90%;
+    height: 90%;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px #f0f0f0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    padding: 20px 10px;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 calc(22% + 10px);
+}
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.message {
+    height: 30px;
+    position: relative;
+    background-color: #ffdce0;
+    border: 2px solid #fec1c8;
+    color: #d63c49;
+    width: 100%;
+    padding: 3px 5px;
+    border-radius: 5px;
+    top: -96px;
+}
+.succes {
+    background-color: #dcf3d6;
+    border: 2px solid #bad4b1;
+    color: #8c9e84;
+}

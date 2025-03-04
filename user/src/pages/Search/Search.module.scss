@@ -1,0 +1,166 @@
+.wrapper {
+    width: 100%;
+    color: #131313;
+    margin-top: 40px;
+    display: flex;
+}
+
+.sidebar {
+    width: 350px;
+    padding-right: 10px;
+}
+.result {
+    flex: 1;
+    min-height: 100px;
+    width: 200px;
+}
+.search-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.input {
+    border: 1px solid #ccc;
+}
+
+.search-box button {
+    width: 180px;
+    height: 40px;
+}
+
+.result {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.filter input,
+.filter select,
+.filter option {
+    height: 40px;
+    font-size: 1.7rem;
+    min-width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding: 0 10px;
+    flex: 1;
+}
+
+.filter {
+    width: 100%;
+    border-bottom: 1px solid #292929;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter_item {
+    margin-top: 7px;
+    display: flex;
+
+    p {
+        width: 130px;
+    }
+}
+
+.filter_item > p {
+}
+
+.filter_price {
+    display: flex;
+    flex-direction: column;
+}
+
+.result {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.checkbox-item input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 15px;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    width: 18px !important;
+    height: 18px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.checkbox-item input[type='checkbox']:checked {
+    background-color: #fceded; /* Hiệu ứng màu nền khi check */
+    border-color: rgb(252, 105, 105);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checkbox-item input[type='checkbox']:checked::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border: solid rgb(252, 105, 105);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0); /* Bắt đầu với kích thước nhỏ */
+    top: 0px;
+    left: 5px;
+    opacity: 0; /* Ẩn ban đầu */
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Hiệu ứng checkmark */
+}
+
+.checkbox-item input[type='checkbox']:checked::after {
+    transform: rotate(45deg) scale(1); /* Hiện đầy đủ khi check */
+    opacity: 1; /* Hiển thị */
+}
+
+.checkbox-item label {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.checkbox-item label span {
+    display: block;
+    flex: 1;
+}
+
+.filter_checkbox {
+    margin-top: 20px;
+}
+
+.showBtn {
+    font-size: 1.4rem;
+}
+
+.showEmty {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    align-items: center;
+}
+
+.result-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.result {
+    width: 100%;
+}
+
+.pagination {
+}

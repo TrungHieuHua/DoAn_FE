@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100vh;
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+.wrapper input {
+    height: 45px;
+    width: 100%;
+    border-radius: 7px;
+    font-size: 1.6rem;
+    padding: 13px;
+}
+
+.result {
+    font-size: 4rem;
+    background-color: aliceblue;
+}

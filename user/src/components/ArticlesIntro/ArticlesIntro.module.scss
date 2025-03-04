@@ -1,0 +1,70 @@
+.wrapper {
+    color: #1a1a1a;
+}
+.wrapper > h1 {
+    padding: 25px 0;
+}
+.list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 13px;
+    grid-column-gap: 50px;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 13px;
+    padding-bottom: 13px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #777676;
+}
+.img-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.img-item img {
+    width: 100%;
+    border-radius: 13px;
+}
+.info h3 a {
+    color: #131313;
+    font-size: 1.8rem;
+    display: -webkit-box; /* thiết lập hiển thị dạng box của Webkit */
+    -webkit-box-orient: vertical; /* thiết lập hướng của box là dọc */
+    -webkit-line-clamp: 3; /* giới hạn số dòng là 3 */
+    overflow: hidden;
+    cursor: pointer;
+    &:hover {
+        color: #0056b3;
+    }
+}
+.info p {
+    color: #86868b;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.info p span {
+    margin-right: 13px;
+}
+.all {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* desktop */
+@media only screen and (min-width: 1025px) {
+}

@@ -1,0 +1,25 @@
+.wrapper {
+    margin: 5px;
+    border-radius: 10px;
+    display: block;
+}
+.col th {
+    padding: 10px 5px;
+    background-color: #eee;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+.rowx td {
+    padding: 10px 5px;
+    position: relative;
+}
+.rowx {
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(231, 231, 231, 0.2);
+    }
+}
+.col th,
+.rowx td {
+    border-bottom: 1px solid #ccc;
+}

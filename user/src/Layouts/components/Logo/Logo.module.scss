@@ -1,0 +1,22 @@
+.wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.wrapper img {
+    max-width: 220px;
+    max-height: 90%;
+    object-fit: cover;
+}
+.logo_text {
+    font-size: 2rem;
+    display: flex;
+}
+
+.logo_text p:nth-child(1) {
+    color: red;
+}
+
+.logo_text p:nth-child(2) {
+    color: #131313;
+}

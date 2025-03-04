@@ -1,0 +1,168 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500; 600;0,700;1,500&display=swap');
+
+:root {
+    --primary: #fff;
+    --black: #000;
+    --while: #fff;
+    --text-color: #131313;
+    --header-height: 65px;
+
+    //Default layout
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    color: var(--text-color);
+    background-color: #ffffff;
+}
+body {
+    font-family: 'roboto', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    overflow-y: overlay;
+    background-color: #ffffff;
+}
+
+// ScrollBar CSS
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #515154;
+}
+
+// Fonts Embeded
+
+// Custom Tippy Tooltip
+.swiper-button-prev,
+.swiper-button-next {
+    background-color: rgba(221, 220, 220, 0.1);
+    color: #d2d2d7;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* mobile */
+@media only screen and (max-width: 767px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+    html *::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+    html *::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+/* desktop */
+@media only screen and (min-width: 1025px) {
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    list-style: none;
+    user-select: none;
+}
+
+.pagination-page {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-page a {
+    color: #515154;
+}
+
+.pagination-page:hover {
+    background-color: #f0f0f0;
+}
+
+.active {
+    background-color: #007bff;
+
+    border-color: #007bff;
+}
+
+.active a {
+    color: #fff !important;
+}
+
+.pagination-page:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-previous,
+.pagination-next {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #000 !important;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination-previous a,
+.pagination-next a {
+    color: #787878;
+}
+
+.pagination-previous:hover,
+.pagination-next:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination-previous:disabled,
+.pagination-next:disabled {
+    cursor: not-allowed;
+    color: #ccc;
+}

@@ -1,0 +1,11 @@
+.name {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.group_btn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 35px;
+}
