@@ -61,6 +61,7 @@ export const register = async (req) => {
             email: req.email,
             password: req.password,
             username: req.username,
+            birthday: req.ngaysinh,
             role: 'USER',
         });
 

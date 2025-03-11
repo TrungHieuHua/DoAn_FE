@@ -192,7 +192,7 @@ function Header() {
                         })}
                         <p>
                             <Link className={cx('link')} to={routes.articles}>
-                                Bài Viết
+                                Bài viết
                             </Link>
                         </p>
                     </div>

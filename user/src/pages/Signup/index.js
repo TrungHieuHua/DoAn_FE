@@ -21,6 +21,7 @@ function Signup() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isSucces, setIsSucces] = useState(false);
+    const [dob, setDob] = useState('1970-01-01');
 
     const handleFirstNameChange = (e) => {
         setFirstName(e.target.value);
@@ -45,7 +46,9 @@ function Signup() {
     const handleConfirmPasswordChange = (e) => {
         setConfirmPassword(e.target.value);
     };
-
+    const handleDateOfBirth = (e) => {
+        setDob(e.target.value);
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -71,6 +74,7 @@ function Signup() {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
+               // ngaysinh: dob,
                 username: username,
                 password: password,
             });
@@ -101,6 +105,7 @@ function Signup() {
                         </div>
                         <div className={cx('form')}>
                             <FormInput type="text" label="Email: " value={email} onChange={handleEmailChange} />
+                            <FormInput type="date" label="Ngày Sinh: " value={dob} onChange={handleDateOfBirth} />
                         </div>
                         <FormInput type="text" label="Username" value={username} onChange={handleUsernameChange} />
                         <FormInput
