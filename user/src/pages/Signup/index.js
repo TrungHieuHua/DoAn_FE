@@ -74,7 +74,7 @@ function Signup() {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
-               // ngaysinh: dob,
+                birthday: dob,
                 username: username,
                 password: password,
             });
@@ -83,7 +83,7 @@ function Signup() {
                 setIsSucces(true);
                 setTimeout(() => {
                     window.location.href = routes.login;
-                }, 1000);
+                }, 1500);
             } else {
                 setErrorMessage(response.message);
             }

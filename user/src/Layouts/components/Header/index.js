@@ -172,10 +172,10 @@ function Header() {
                 style={showMenu ? { display: 'block' } : { display: 'none' }}
             >
                 <div className={cx('profile')}>
-                    <Link to={isLogin() ? routes.profile : routes.login}>
+                    {/* <Link to={isLogin() ? routes.profile : routes.login}>
                         <FontAwesomeIcon icon={faUser} />
                         <span>Thông tin cá nhân</span>
-                    </Link>
+                    </Link> */}
                 </div>
                 <div className={cx('menu-list_list')}>
                     <div className={cx('menu_2')}>
@@ -190,11 +190,7 @@ function Header() {
                                 );
                             return null;
                         })}
-                        <p>
-                            <Link className={cx('link')} to={routes.articles}>
-                                Bài viết
-                            </Link>
-                        </p>
+                        
                     </div>
                 </div>
                 <div className={cx('menu-list_control')}>

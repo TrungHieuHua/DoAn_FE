@@ -28,7 +28,7 @@ export default function Slider() {
     return (
         <>
             <Swiper
-                style={{ height: '500px', width: '1284px' }}
+                style={{ height: '380px', width: '1400px' }}
                 slidesPerView={1}
                 spaceBetween={30}
                 loop={true}
@@ -37,7 +37,7 @@ export default function Slider() {
                 }}
                 navigation={true}
                 autoplay={{
-                    delay: 3000, // Delay between slides in milliseconds (3000ms = 3 seconds)
+                    delay: 5000, // Delay between slides in milliseconds (3000ms = 3 seconds)
                     disableOnInteraction: false, // Autoplay won't stop after user interaction
                 }}
                 modules={[Pagination, Navigation, Autoplay]} // Add Autoplay module

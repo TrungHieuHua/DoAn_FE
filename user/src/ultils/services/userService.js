@@ -61,7 +61,8 @@ export const register = async (req) => {
             email: req.email,
             password: req.password,
             username: req.username,
-            birthday: req.ngaysinh,
+            birthday: req.birthday,
+            avatar: 'http://res.cloudinary.com/dhypw7pdk/image/upload/27a9c4a8-e23a-4d32-9303-226246fa190e_download.png',
             role: 'USER',
         });
 

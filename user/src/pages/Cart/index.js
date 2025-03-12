@@ -237,9 +237,12 @@ function Cart() {
                                                     />
                                                 </th>
                                                 <th rowSpan={2}>Hình ảnh</th>
-                                                <th colSpan={2} width={700} style={{ textAlign: 'center' }}>
-                                                    Chi tiết
+                                                <th rowSpan={2} width={150}>Tên sản phẩm</th>
+                                                <th width={150} style={{ maxWidth: '100px' }}>
+                                                    Màu sắc
                                                 </th>
+                                              
+                                                
                                                 <th rowSpan={2} width={150}>
                                                     Giá bán
                                                 </th>
@@ -248,12 +251,7 @@ function Cart() {
                                                 </th>
                                                 <th rowSpan={2} width={50}></th>
                                             </tr>
-                                            <tr>
-                                                <th>Tên sản phẩm</th>
-                                                <th width={70} style={{ maxWidth: '70px' }}>
-                                                    Màu sắc
-                                                </th>
-                                            </tr>
+                                           
                                         </thead>
                                         <tbody>
                                             {items.map((item) => (
