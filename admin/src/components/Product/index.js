@@ -3,7 +3,7 @@ import React from 'react';
 
 import styles from './Product.module.scss';
 import Ellipsis from '~/components/Ellipsis';
-import { deleted } from '~/ultils/services/productService';
+import { deleted,updateIsDelete,getbyid  } from '~/ultils/services/productService';
 import { toast } from 'react-toastify';
 
 const cx = classNames.bind(styles);
@@ -23,13 +23,28 @@ function Product({ props, onEventDeleted, onUpdate, onCreateDetail, onShowDetail
         }
     };
 
+    const handleUpdate = async () => {
+        try {
+            //const data = await getbyid(props.id)
+            const response = await updateIsDelete(props);
+            if (response.statusCode === 201) {
+                toast.success(response.message);
+            }
+            onUpdate(props.id);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const handleDeleteConfirmation = () => {
         if (!props.isDeleted) {
             if (window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
                 handleDelete();
             }
         } else {
-            handleDelete();
+            if (window.confirm('Bạn có chắc chắn muốn khôi phục sản phẩm này không?')) {
+                handleUpdate();
+            }
         }
     };
 

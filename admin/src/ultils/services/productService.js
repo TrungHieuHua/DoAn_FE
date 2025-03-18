@@ -9,7 +9,7 @@ export const getall = async (name, fromPrice, toPrice, procedures, categories, p
             procedureIds: procedures,
             categoryIds: categories,
             page: page,
-            size: perPage || 100000000000,
+            size: perPage || 100,
         });
         return res.data;
     } catch (error) {
@@ -91,6 +91,7 @@ export const getalldetails = async (id) => {
 export const getbyid = async (id) => {
     try {
         const res = await httpRequest.get('v1/products/' + id, {});
+        console.log(res);
         return res;
     } catch (error) {
         console.log(error);
@@ -100,6 +101,7 @@ export const getbyid = async (id) => {
 export const getdetailbyid = async (id) => {
     try {
         const res = await httpRequest.get('v1/product-details/' + id, {});
+        
         return res;
     } catch (error) {
         console.log(error);
@@ -139,5 +141,45 @@ export const updatedetail = async (req) => {
         return res.data;
     } catch (e) {
         console.log(e);
+    }
+};
+
+export const updateIsDelete = async (req) => {
+    try {
+        const res = await httpRequest.update('v1/products/status', {
+            id: req.id,
+            // name: req.name,
+            // category: parseInt(req.category_id, 10),
+            // img: req.avatar,
+            // description: req.description,
+            // priceRange: req.price,
+            // procedure: parseInt(req.procedure_id, 10),
+            // status: req.status,
+            // isDeleted: !req.isDeleted,
+        });
+        return res.data;
+    } catch (e) {
+        console.log(e);
+        return e.response;
+    }
+};
+
+export const updateDetailsIsDelete = async (req) => {
+    try {
+        const res = await httpRequest.update('v1/product-details/status', {
+            id: req.id,
+            // name: req.name,
+            // category: parseInt(req.category_id, 10),
+            // img: req.avatar,
+            // description: req.description,
+            // priceRange: req.price,
+            // procedure: parseInt(req.procedure_id, 10),
+            // status: req.status,
+            // isDeleted: !req.isDeleted,
+        });
+        return res.data;
+    } catch (e) {
+        console.log(e);
+        return e.response;
     }
 };

@@ -6,14 +6,15 @@ import { v4 } from 'uuid';
 
 import styles from './Products.module.scss';
 
-import { getbyid, deletedDetail } from '~/ultils/services/productService';
+import { getbyid, deletedDetail, updateDetailsIsDelete, getdetailbyid } from '~/ultils/services/productService';
 import Ellipsis from '~/components/Ellipsis';
 
 import { colorPalette } from '~/config/colorPalette';
+import { toast } from 'react-toastify';
 
 const cx = classNames.bind(styles);
 
-function FormProductDetails({ onClose, title, onEventDeleted, onSuccess, id, detailId, onChangeDetailId }) {
+function FormProductDetails({ onClose, title, onEventDeleted, onSuccess, id, detailId, onChangeDetailId, }) {
     const [details, setDetails] = useState([]);
     const [titlex, setTitlex] = useState('');
 
@@ -43,17 +44,45 @@ function FormProductDetails({ onClose, title, onEventDeleted, onSuccess, id, det
         }
     }, [id]);
 
-    const handleDelete = async (detailId) => {
+    const  handleDelete = async (detailId) => {
         try {
+            
             const response = await deletedDetail(detailId);
             if (response.statusCode === 200) {
-                onEventDeleted(detailId); // Thông báo cho parent component về sự kiện xóa
+               // onEventDeleted(detailId);
             }
+            
         } catch (error) {
             console.log(error);
         }
     };
 
+    const  handleUpdate = async (detailId) => {
+        try {
+            const data = await getdetailbyid(detailId);
+            console.log(data.data);
+            const response = await updateDetailsIsDelete(data);
+            if (response.statusCode === 200) {
+               // onEventDeleted(detailId);
+            }
+            
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleDeleteConfirmation = () => {
+        
+        if (details.isDeleted) {
+            if (window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+                handleDelete(detailId);
+            }
+        } else {
+            if (window.confirm('Bạn có chắc chắn muốn khôi phục sản phẩm này không?')) {
+                handleUpdate(detailId);
+            }
+        }
+    };
     useEffect(() => {
         if (id) {
             const fetchData = async () => {
@@ -112,9 +141,10 @@ function FormProductDetails({ onClose, title, onEventDeleted, onSuccess, id, det
                                                     },
                                                 },
                                                 {
-                                                    title: 'Xóa',
-                                                    onClick: () => handleDelete(detail.id),
+                                                    title: detail.isDeleted ? 'Khôi phục' : 'Xóa',
+                                                    onClick: () => handleDeleteConfirmation(),
                                                 },
+                                               
                                             ]}
                                         />
                                     </td>
