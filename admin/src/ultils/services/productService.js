@@ -168,13 +168,13 @@ export const updateDetailsIsDelete = async (req) => {
     try {
         const res = await httpRequest.update('v1/product-details/status', {
             id: req.id,
-            // name: req.name,
-            // category: parseInt(req.category_id, 10),
-            // img: req.avatar,
-            // description: req.description,
-            // priceRange: req.price,
-            // procedure: parseInt(req.procedure_id, 10),
-            // status: req.status,
+            name: req.name,
+           // category: parseInt(req.category_id, 10),
+            img: req.avatar,
+            description: req.description,
+            priceRange: req.price,
+           // procedure: parseInt(req.procedure_id, 10),
+           // status: req.status,
             // isDeleted: !req.isDeleted,
         });
         return res.data;

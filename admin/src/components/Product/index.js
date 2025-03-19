@@ -16,23 +16,32 @@ function Product({ props, onEventDeleted, onUpdate, onCreateDetail, onShowDetail
             const response = await deleted(props.id);
             if (response.statusCode === 204) {
                 toast.success(response.message);
+                if (onEventDeleted) {
+                    onEventDeleted(props.id);
+                }
+            } else {
+                toast.error(response.message || 'Có lỗi xảy ra khi xóa sản phẩm');
             }
-            onEventDeleted(props.id);
         } catch (error) {
             console.log(error);
+            toast.error('Có lỗi xảy ra khi xóa sản phẩm');
         }
     };
 
     const handleUpdate = async () => {
         try {
-            //const data = await getbyid(props.id)
             const response = await updateIsDelete(props);
             if (response.statusCode === 201) {
                 toast.success(response.message);
+                if (onEventDeleted) {
+                    onEventDeleted(props.id);
+                }
+            } else {
+                toast.error(response.message || 'Có lỗi xảy ra khi khôi phục sản phẩm');
             }
-            onUpdate(props.id);
         } catch (error) {
             console.log(error);
+            toast.error('Có lỗi xảy ra khi khôi phục sản phẩm');
         }
     };
 

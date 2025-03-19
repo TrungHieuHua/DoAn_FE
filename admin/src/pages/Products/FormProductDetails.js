@@ -46,40 +46,60 @@ function FormProductDetails({ onClose, title, onEventDeleted, onSuccess, id, det
 
     const  handleDelete = async (detailId) => {
         try {
-            
             const response = await deletedDetail(detailId);
-            if (response.statusCode === 200) {
-               // onEventDeleted(detailId);
+            console.log(response.statusCode);
+            if (response.status === 200 || response.status === 201) {
+                toast.success(response.data.message);
+                // Refresh the details list
+                const updatedResponse = await getbyid(id);
+                if (updatedResponse.statusCode === 200) {
+                    setDetails(updatedResponse.data.productDetailResponseList);
+                } else {
+                    toast.error('Không thể tải lại danh sách sản phẩm');
+                }
+            } else {
+                toast.error(response.message || 'Có lỗi ');
             }
-            
         } catch (error) {
             console.log(error);
+            toast.error('Có lỗi xảy ra khi xóa sản phẩm');
         }
     };
 
     const  handleUpdate = async (detailId) => {
         try {
             const data = await getdetailbyid(detailId);
-            console.log(data.data);
-            const response = await updateDetailsIsDelete(data);
-            if (response.statusCode === 200) {
-               // onEventDeleted(detailId);
+            if (data.statusCode === 200) {
+                const updateData = {
+                    ...data.data,
+                    isDeleted: false
+                };
+                const response = await updateDetailsIsDelete(updateData);
+                if (response.statusCode === 201) {
+                    toast.success('Khôi phục sản phẩm thành công');
+                    // Refresh the details list
+                    const updatedResponse = await getbyid(id);
+                    if (updatedResponse.statusCode === 200) {
+                        setDetails(updatedResponse.data.productDetailResponseList);
+                    }
+                } else {
+                    toast.error(response.message || 'Có lỗi xảy ra');
+                }
             }
-            
         } catch (error) {
             console.log(error);
+            toast.error('Có lỗi xảy ra khi khôi phục sản phẩm');
         }
     };
 
-    const handleDeleteConfirmation = () => {
-        
-        if (details.isDeleted) {
-            if (window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
-                handleDelete(detailId);
+    const handleDeleteConfirmation = (detail) => {
+        if (detail.isDeleted) {
+            if (window.confirm('Bạn có chắc chắn muốn khôi phục sản phẩm này không?')) {
+                handleUpdate(detail.id);
             }
         } else {
-            if (window.confirm('Bạn có chắc chắn muốn khôi phục sản phẩm này không?')) {
-                handleUpdate(detailId);
+            if (window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+                handleDelete(detail.id);
             }
         }
     };
@@ -142,7 +162,7 @@ function FormProductDetails({ onClose, title, onEventDeleted, onSuccess, id, det
                                                 },
                                                 {
                                                     title: detail.isDeleted ? 'Khôi phục' : 'Xóa',
-                                                    onClick: () => handleDeleteConfirmation(),
+                                                    onClick: () => handleDeleteConfirmation(detail),
                                                 },
                                                
                                             ]}
