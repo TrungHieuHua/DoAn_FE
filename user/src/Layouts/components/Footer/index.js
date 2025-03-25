@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 
 import styles from './Footer.module.scss';
 import Logo from '../Logo';
+import Chatbot from '../../../components/Chatbot/Chatbot';
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +30,7 @@ function Footer() {
                 </div>
             </div>
             <div className={cx('copyright')}> ©2025 Created by Hua Trung Hieu</div>
+            <Chatbot />
         </footer>
     );
 }

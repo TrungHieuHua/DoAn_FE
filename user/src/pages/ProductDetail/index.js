@@ -13,12 +13,14 @@ import { updateCart } from '~/ultils/services/cartService';
 import routes from '~/config/routes';
 import { isLogin } from '~/ultils/cookie/checkLogin';
 import { Image } from 'react-bootstrap';
+import Comment from '~/components/Comment/Comment';
 
 const cx = classNames.bind(styles);
 
 function ProductDetail() {
     const [active, setActive] = useState(true);
     const [showMore, setShowMore] = useState(false);
+    const [showComments, setShowComments] = useState(false);
     const [product, setProduct] = useState({});
     const [selectedSize, setSelectedSize] = useState(null); // No default size selected
     const [selectedColor, setSelectedColor] = useState(null); // No default color selected
@@ -234,18 +236,39 @@ function ProductDetail() {
             <div className={cx('detail')}>
                 <div className={cx('btn-sl')}>
                     <Button
-                        onClick={() => setActive(true)}
-                        style={!active ? { border: '1px solid #eee', color: '#ccc' } : {}}
+                        onClick={() => {
+                            setActive(true);
+                            setShowComments(false);
+                        }}
+                        style={active ? { border: '1px solid #eee', color: '#ccc', cursor: 'not-allowed' } : {}}
                         outline
+                        disabled={active}
                     >
                         Mô tả
                     </Button>
                     <Button
-                        onClick={() => setActive(false)}
-                        style={active ? { border: '1px solid #eee', color: '#ccc' } : {}}
+                        onClick={() => {
+                            setActive(false);
+                            setShowComments(false);
+                        }}
+                        style={!active && !showComments ? { border: '1px solid #eee', color: '#ccc', cursor: 'not-allowed' } : {}}
                         outline
+                        disabled={!active && !showComments}
                     >
                         Nhà cung cấp
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            setShowComments(!showComments);
+                            if (!showComments) {
+                                setActive(false);
+                            }
+                        }}
+                        style={showComments ? { border: '1px solid #eee', color: '#ccc', cursor: 'not-allowed' } : {}}
+                        outline
+                        disabled={showComments}
+                    >
+                        Bình Luận
                     </Button>
                 </div>
                 {active ? (
@@ -257,14 +280,15 @@ function ProductDetail() {
                             </Button>
                         </div>
                     </div>
-                ) : (
+                ) : !showComments ? (
                     <div className={cx('parameter')}>
                         <h2>{product.procedure.name}</h2>
                         <div>
                             <Image src={product.procedure.img} />
                         </div>
                     </div>
-                )}
+                ) : null}
+                {showComments && <Comment productId={id} />}
             </div>
         </div>
     );
