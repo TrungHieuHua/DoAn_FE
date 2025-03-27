@@ -34,6 +34,26 @@
             box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
         }
     }
+
+    .rating {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 5px;
+
+        .star {
+            font-size: 24px;
+            color: #ddd;
+            transition: color 0.2s ease;
+
+            &.active {
+                color: #ffc107;
+            }
+
+            &.hover {
+                transform: scale(1.1);
+            }
+        }
+    }
 }
 
 .rating-container {
@@ -41,12 +61,6 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-}
-
-.rating {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 5px;
 }
 
 .star-container {
@@ -58,20 +72,6 @@
     }
 }
 
-.star {
-    font-size: 24px;
-    color: #ddd;
-    transition: color 0.2s ease;
-
-    &.active {
-        color: #ffc107;
-    }
-
-    &.hover {
-        transform: scale(1.1);
-    }
-}
-
 .rating-text {
     font-size: 14px;
     color: #666;
@@ -80,14 +80,28 @@
 
 .comments-list {
     margin-top: 30px;
-}
 
-.comment-item {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
+    .comment-item {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
 
-    &:last-child {
-        border-bottom: none;
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .rating {
+            display: flex;
+            gap: 3px;
+
+            .star {
+                font-size: 16px;
+                color: #ddd;
+
+                &.active {
+                    color: #FFD700;
+                }
+            }
+        }
     }
 }
 
@@ -118,4 +132,14 @@
     color: #444;
     line-height: 1.5;
     margin: 0;
+}
+
+.no-comments {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 20px;
 } 
