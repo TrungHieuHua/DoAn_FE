@@ -44,7 +44,7 @@ const Chatbot = () => {
 
         try {
             // Call Dialogflow API
-            const response = await axios.post('/api/chatbot', {
+            const response = await axios.post('http://localhost:8080/api/chatbot', {
                 message: inputMessage,
                 sessionId: sessionId
             });
