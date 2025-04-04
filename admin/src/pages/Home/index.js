@@ -5,6 +5,7 @@ import TopProducts from '~/components/Table/TopProducts';
 import Cards from '~/components/Cards';
 import Ranking from '~/components/Ranking';
 import CustomerReview from '~/components/CustomerReview';
+import Notification from '../../components/Notification';
 import styles from './Home.module.scss';
 import * as XLSX from 'xlsx';
 import { getCookie } from '~/ultils/cookie';
@@ -57,7 +58,9 @@ const tableTitle = (
 );
 
 function Home() {
-    getCookie('login');
+    console.log('Home component rendered');
+    const token = getCookie('login');
+    console.log('Token in Home:', token);
 
     // Lấy ngày hiện tại
     const currentDate = new Date();
@@ -110,7 +113,10 @@ function Home() {
 
     return (
         <div className={cx('wrapper')}>
-            <h1 className={cx('title')}>Dashboard</h1>
+            <div className={cx('header')}>
+                <h1 className={cx('title')}>Dashboard</h1>
+                <Notification />
+            </div>
             <div className={cx('content')}>
                 <div
                     style={{

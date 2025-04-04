@@ -6,7 +6,7 @@ export const getall = async (fromDate, toDate, page, perPage) => {
             dateFrom: fromDate,
             dateTo: toDate,
             page: page,
-            size: perPage || 10000000000,
+            size: perPage || 1000,
             role: 'ADMIN',
         });
         return res.data;

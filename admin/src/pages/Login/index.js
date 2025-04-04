@@ -44,6 +44,8 @@ function Login() {
             if (response.statusCode === 200) {
                 toast.success('Đăng nhập thành công');
                 setCookie('accessToken', response.data.accessToken);
+                // Thêm dòng này để lưu token vào localStorage cho notifications
+                localStorage.setItem('token', response.data.accessToken);
                 navigate(routes.home);
                 return;
             } else {
@@ -52,16 +54,11 @@ function Login() {
                 } else {
                     toast.error(response.data.message);
                 }
-
                 return;
             }
-
-            // Xử lý phản hồi từ server sau khi đăng ký thành công
         } catch (error) {
             toast.error(error.data.message);
         }
-
-        // Xử lý đăng nhập
     };
 
     return (

@@ -8,7 +8,8 @@ export const getall = async (fullName, fromDate, toDate, status, page, perPage) 
             dateTo: toDate,
             status: status || null,
             page: page,
-            size: perPage || 10000000000,
+          
+            size: perPage || 1000,
         });
         return res.data;
     } catch (error) {
