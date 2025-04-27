@@ -18,7 +18,7 @@ export const register = async (req) => {
 
 export const login = async (req) => {
     try {
-        const res = await httpRequest.post('login', {
+        const res = await httpRequest.post('/v1/login', {
             username: req.username,
             password: req.password,
         });
