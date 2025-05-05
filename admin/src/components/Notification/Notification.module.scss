@@ -7,8 +7,9 @@
     margin-right: 15px;
     display: flex;
     align-items: center;
-    
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
         color: #007bff;
     }
 
@@ -24,8 +25,8 @@
 
 .badge {
     position: absolute;
-    top: -5px;
-    right: -8px;
+    top: -2px;
+    right: -2px;
     background-color: #dc3545;
     color: white;
     border-radius: 50%;
@@ -38,6 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translate(25%, -25%);
 }
 
 .notification-menu {
@@ -67,7 +69,7 @@
     &::-webkit-scrollbar-thumb {
         background: #c1c1c1;
         border-radius: 4px;
-        
+
         &:hover {
             background: #a8a8a8;
         }
@@ -78,7 +80,7 @@
     padding: 1rem !important;
     border-bottom: 1px solid #eee;
     cursor: pointer;
-    
+
     &:last-child {
         border-bottom: none;
     }
@@ -89,7 +91,7 @@
 
     &.unread {
         background-color: #f0f7ff !important;
-        
+
         &:hover {
             background-color: #e6f0fa !important;
         }
@@ -150,4 +152,4 @@
     background-color: #e6f3ff;
     padding: 4px 12px;
     border-radius: 16px;
-} 
+}

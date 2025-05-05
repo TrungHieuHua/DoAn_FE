@@ -10,71 +10,80 @@ import styles from './Notification.module.scss';
 const cx = classNames.bind(styles);
 const SOCKET_URL = 'http://localhost:8080/ws';
 
-function Notification() {
+function Notification({ initialUnreadCount = 0 }) {
     const [notifications, setNotifications] = useState([]);
-    const [unreadCount, setUnreadCount] = useState(0);
+    const [unreadCount, setUnreadCount] = useState(initialUnreadCount);
     const [isLoading, setIsLoading] = useState(false);
     const [show, setShow] = useState(false);
     const [stompClient, setStompClient] = useState(null);
 
+    // Update unreadCount when initialUnreadCount changes
+    useEffect(() => {
+        setUnreadCount(initialUnreadCount);
+    }, [initialUnreadCount]);
+
     // Khởi tạo WebSocket connection
     useEffect(() => {
         let isSubscribed = true;
-        
+
         const connectWebSocket = () => {
             const socket = new SockJS(SOCKET_URL);
             const stomp = Stomp.over(socket);
 
-            stomp.connect({}, () => {
-                if (!isSubscribed) return;
-                
-                console.log('WebSocket Connected');
-                setStompClient(stomp);
-
-                // Subscribe để nhận thông báo chung
-                stomp.subscribe('/topic/admin/notification', (message) => {
+            stomp.connect(
+                {},
+                () => {
                     if (!isSubscribed) return;
-                    
-                    try {
-                        const newNotification = JSON.parse(message.body);
-                        console.log('New notification received:', newNotification);
-                        
-                        // Thêm thông báo mới vào state
-                        setNotifications(prev => [newNotification, ...prev]);
-                        setUnreadCount(prev => prev + 1);
-                        
-                        // Phát âm thanh thông báo
-                        playNotificationSound();
-                    } catch (error) {
-                        console.error('Error processing notification:', error);
-                    }
-                });
 
-                // Subscribe để nhận thông báo cá nhân (nếu cần)
-                const userId = localStorage.getItem('userId'); // Hoặc lấy từ context/redux
-                if (userId) {
-                    stomp.subscribe(`/user/${userId}/queue/notifications`, (message) => {
+                    console.log('WebSocket Connected');
+                    setStompClient(stomp);
+
+                    // Subscribe để nhận thông báo chung
+                    stomp.subscribe('/topic/admin/notification', (message) => {
                         if (!isSubscribed) return;
-                        
+
                         try {
                             const newNotification = JSON.parse(message.body);
-                            console.log('New personal notification received:', newNotification);
-                            
-                            setNotifications(prev => [newNotification, ...prev]);
-                            setUnreadCount(prev => prev + 1);
+                            console.log('New notification received:', newNotification);
+
+                            // Thêm thông báo mới vào state
+                            setNotifications((prev) => [newNotification, ...prev]);
+                            setUnreadCount((prev) => prev + 1);
+
+                            // Phát âm thanh thông báo
                             playNotificationSound();
                         } catch (error) {
-                            console.error('Error processing personal notification:', error);
+                            console.error('Error processing notification:', error);
                         }
                     });
-                }
-            }, (error) => {
-                console.error('WebSocket connection error:', error);
-                // Thử kết nối lại sau 5 giây nếu mất kết nối
-                if (isSubscribed) {
-                    setTimeout(connectWebSocket, 5000);
-                }
-            });
+
+                    // Subscribe để nhận thông báo cá nhân (nếu cần)
+                    const userId = localStorage.getItem('userId'); // Hoặc lấy từ context/redux
+                    if (userId) {
+                        stomp.subscribe(`/user/${userId}/queue/notifications`, (message) => {
+                            if (!isSubscribed) return;
+
+                            try {
+                                const newNotification = JSON.parse(message.body);
+                                console.log('New personal notification received:', newNotification);
+
+                                setNotifications((prev) => [newNotification, ...prev]);
+                                setUnreadCount((prev) => prev + 1);
+                                playNotificationSound();
+                            } catch (error) {
+                                console.error('Error processing personal notification:', error);
+                            }
+                        });
+                    }
+                },
+                (error) => {
+                    console.error('WebSocket connection error:', error);
+                    // Thử kết nối lại sau 5 giây nếu mất kết nối
+                    if (isSubscribed) {
+                        setTimeout(connectWebSocket, 5000);
+                    }
+                },
+            );
 
             return stomp;
         };
@@ -95,10 +104,10 @@ function Notification() {
         try {
             const response = await getNotifications();
             console.log('API Response:', response);
-            
+
             if (response?.statusCode === 200 && Array.isArray(response?.data)) {
                 setNotifications(response.data);
-                setUnreadCount(response.data.filter(n => !n.read).length);
+                setUnreadCount(response.data.filter((n) => !n.read).length);
             } else {
                 setNotifications([]);
                 setUnreadCount(0);
@@ -123,14 +132,12 @@ function Notification() {
         try {
             const response = await markNotificationAsRead(notificationId);
             if (response?.statusCode === 200) {
-                setNotifications(prevNotifications => 
-                    prevNotifications.map(notification => 
-                        notification.id === notificationId 
-                            ? { ...notification, read: true }
-                            : notification
-                    )
+                setNotifications((prevNotifications) =>
+                    prevNotifications.map((notification) =>
+                        notification.id === notificationId ? { ...notification, read: true } : notification,
+                    ),
                 );
-                setUnreadCount(prev => Math.max(0, prev - 1));
+                setUnreadCount((prev) => Math.max(0, prev - 1));
                 setShow(false);
             }
         } catch (error) {
@@ -147,7 +154,7 @@ function Notification() {
                 month: '2-digit',
                 day: '2-digit',
                 hour: '2-digit',
-                minute: '2-digit'
+                minute: '2-digit',
             });
         } catch (error) {
             console.error('Error formatting date:', error);
@@ -173,21 +180,17 @@ function Notification() {
         return notifications.map((notification) => (
             <div
                 key={notification.id}
-                className={cx('notification-item', { 'unread': !notification.read })}
+                className={cx('notification-item', { unread: !notification.read })}
                 onClick={() => handleNotificationClick(notification.id)}
             >
                 <div className={cx('notification-content')}>
                     <div className={cx('notification-header')}>
                         <h6 className={cx('title')}>{notification.title}</h6>
-                        {!notification.read && (
-                            <span className={cx('unread-dot')}></span>
-                        )}
+                        {!notification.read && <span className={cx('unread-dot')}></span>}
                     </div>
                     <p className={cx('message')}>{notification.message}</p>
                     <div className={cx('notification-footer')}>
-                        <small className={cx('time')}>
-                            {formatDate(notification.createdAt)}
-                        </small>
+                        <small className={cx('time')}>{formatDate(notification.createdAt)}</small>
                         <small className={cx('type')}>
                             {notification.type === 'ORDER' ? 'Đơn hàng' : notification.type}
                         </small>
@@ -199,21 +202,12 @@ function Notification() {
 
     return (
         <Dropdown show={show} onToggle={handleDropdownToggle}>
-            <Dropdown.Toggle 
-                variant="link" 
-                id="notification-dropdown" 
-                className={cx('notification-toggle')}
-            >
+            <Dropdown.Toggle variant="link" id="notification-dropdown" className={cx('notification-toggle')}>
                 <FaBell size={28} />
-                {unreadCount > 0 && (
-                    <span className={cx('badge')}>{unreadCount}</span>
-                )}
+                {unreadCount > 0 && <span className={cx('badge')}>{unreadCount}</span>}
             </Dropdown.Toggle>
 
-            <Dropdown.Menu 
-                className={cx('notification-menu')}
-                align="end"
-            >
+            <Dropdown.Menu className={cx('notification-menu')} align="end">
                 <div className={cx('notification-list')}>
                     {isLoading ? (
                         <div className={cx('notification-item')}>Đang tải thông báo...</div>
@@ -228,4 +222,4 @@ function Notification() {
     );
 }
 
-export default Notification; 
+export default Notification;

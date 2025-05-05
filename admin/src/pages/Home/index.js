@@ -9,6 +9,7 @@ import Notification from '../../components/Notification';
 import styles from './Home.module.scss';
 import * as XLSX from 'xlsx';
 import { getCookie } from '~/ultils/cookie';
+import { getNotifications } from '~/ultils/services/NotificationService';
 
 import { Form, Row, Col, Button } from 'react-bootstrap';
 
@@ -73,6 +74,24 @@ function Home() {
     const [month, setMonth] = useState(currentMonth.toString()); // Tháng mặc định là tháng hiện tại
     const [year, setYear] = useState(currentYear.toString()); // Năm mặc định là năm hiện tại
     const [year2, setYear2] = useState(currentYear.toString()); // Năm mặc định là năm hiện tại
+    const [unreadCount, setUnreadCount] = useState(0);
+
+    // Fetch notifications when component mounts
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const response = await getNotifications();
+                console.log('Notifications fetched:', response);
+                if (response?.statusCode === 200 && Array.isArray(response?.data)) {
+                    const unread = response.data.filter((n) => !n.read).length;
+                    setUnreadCount(unread);
+                }
+            } catch (error) {
+                console.error('Error fetching notifications:', error);
+            }
+        };
+        fetchNotifications();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -115,7 +134,7 @@ function Home() {
         <div className={cx('wrapper')}>
             <div className={cx('header')}>
                 <h1 className={cx('title')}>Dashboard</h1>
-                <Notification />
+                <Notification initialUnreadCount={unreadCount} />
             </div>
             <div className={cx('content')}>
                 <div
