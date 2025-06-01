@@ -17,6 +17,7 @@ import Search from '~/pages/Search';
 import ForgotPassword from '~/pages/ForgotPassword';
 import ChangePassword from '~/pages/ChangePassword';
 import PaymentResponse from '~/pages/PaymentResponse';
+import RecommendedProductsPage from '~/pages/RecommendedProducts';
 
 // Public routes
 const publicRoutes = [
@@ -35,6 +36,7 @@ const publicRoutes = [
     { path: config.routes.forgotPassword, component: ForgotPassword, layout: HeaderOnly },
     { path: config.routes.changePassword, component: ChangePassword, layout: HeaderOnly },
     { path: config.routes.paymentsResponse, component: PaymentResponse, layout: HeaderOnly },
+    { path: config.routes.recommendedProducts, component: RecommendedProductsPage, layout: HeaderOnly },
 ];
 
 const privateRoutes = [];

@@ -17,6 +17,7 @@ const routes = {
     forgotPassword: '/forgot-password',
     changePassword: '/change-password',
     paymentsResponse: '/payments-response',
+    recommendedProducts: '/recommended-products',
 };
 
 export default routes;

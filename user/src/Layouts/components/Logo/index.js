@@ -12,7 +12,7 @@ function Logo() {
         <div className={cx('wrapper')}>
             <Link className={cx('wrapper')} to={routes.home}>
                 <h1 className={cx('logo_text')}>
-                    <p>KuKu</p>
+                    <p>HiuHiu</p>
                     <p>Shop</p>
                 </h1>
             </Link>

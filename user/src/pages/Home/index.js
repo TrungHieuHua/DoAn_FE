@@ -2,7 +2,8 @@ import classNames from 'classnames/bind';
 
 import styles from './Home.module.scss';
 import ProductsIntro from '~/components/ProductsIntro';
-
+import RecommendedProducts from '~/components/RecommendedProducts';
+import NewProducts from '~/components/NewProducts';
 import { getall } from '~/ultils/services/categoriesService';
 import { useEffect, useState } from 'react';
 import Slider from '~/Layouts/components/Slider';
@@ -30,6 +31,8 @@ function Home() {
             <div className={cx('slider')}>
                 <Slider />
             </div>
+            <NewProducts />
+            <RecommendedProducts />
             {cate.map((item) => {
                 return <ProductsIntro key={v4()} title={item.name} id={item.id} />;
             })}

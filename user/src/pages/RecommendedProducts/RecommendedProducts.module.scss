@@ -1,0 +1,120 @@
+.wrapper {
+    width: 100%;
+    min-height: 200px;
+    padding: 20px;
+}
+
+.title {
+    font-size: 3rem;
+    color: #1d1d1c;
+    font-weight: 600;
+    text-align: center;
+    padding: 40px 0 30px;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 7px;
+}
+
+.loading {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #666;
+    padding: 20px;
+}
+
+.error {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ff3b30;
+    padding: 20px;
+}
+
+.empty {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    color: #666;
+    padding: 20px;
+}
+
+.pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:global {
+    .pagination-container {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 5px;
+    }
+
+    .pagination-page {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 0 4px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.6rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #f5f5f5;
+        }
+
+        &.active {
+            background-color: #0066cc;
+            color: white;
+            border-color: #0066cc;
+        }
+    }
+
+    .pagination-previous,
+    .pagination-next {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 0 4px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.6rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #f5f5f5;
+        }
+
+        &.pagination-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+/* mobile */
+@media only screen and (max-width: 767px) {
+    .list {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 0;
+    }
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

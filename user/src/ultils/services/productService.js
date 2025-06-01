@@ -91,3 +91,23 @@ export const update = async (req) => {
         console.log(e);
     }
 };
+
+export const getDiscountedProducts = async () => {
+    try {
+        const res = await httpRequest.get('v1/products/discount', {});
+        return res;
+    } catch (error) {
+        console.error('Error fetching discounted products:', error);
+        throw error;
+    }
+};
+
+export const getNewProducts = async () => {
+    try {
+        const res = await httpRequest.get('v1/products/newproduct', {});
+        return res;
+    } catch (error) {
+        console.error('Error fetching new products:', error);
+        throw error;
+    }
+};
